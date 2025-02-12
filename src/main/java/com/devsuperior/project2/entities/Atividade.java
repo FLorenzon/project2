@@ -2,6 +2,8 @@ package com.devsuperior.project2.entities;
 
 
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Entity;
@@ -10,6 +12,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -26,11 +29,14 @@ public class Atividade {
 	@ManyToOne
 	@JoinColumn(name = "categoria_id")
 	private Categoria categoria;
+	
+	@OneToMany(mappedBy = "atividade")
+	private List<Bloco> blocos = new ArrayList<>();
 	 
 	public Atividade() {
 	}
 
-	public Atividade(Long id, String nome, String descricao, Double preco, Categoria categoria) {
+	public Atividade(Long id, String nome, String descricao, Double preco, Categoria categoria, Bloco blocos) {
 		this.id = id;
 		this.nome = nome;
 		this.descricao = descricao;
@@ -76,6 +82,11 @@ public class Atividade {
 
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
+	}
+	
+	
+	public List<Bloco> getBlocos() {
+		return blocos;
 	}
 
 	@Override
