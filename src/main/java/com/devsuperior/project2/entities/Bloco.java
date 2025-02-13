@@ -3,6 +3,8 @@ package com.devsuperior.project2.entities;
 import java.time.Instant;
 import java.util.Objects;
 
+
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
